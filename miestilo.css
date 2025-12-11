@@ -123,3 +123,124 @@ footer p{
     display: flex;
     gap: 30px;
 }
+/*Tarjetas*/
+.superior{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.card {
+    position: relative;
+    width: 300px;
+    height: 350px;
+    margin: 20px;
+}
+.card .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 1s;
+}
+.card .front {
+    transform: perspective(600px) rotateX(0deg);
+    box-shadow: 10px 10px 10px #000;
+}
+.card .front img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.card .front h3 {
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    color: #cdc4c4;
+    background: rgba(0, 0, 0,.4);
+    text-align: center;
+}
+.card .back {
+    transform: perspective(600px) rotateX(180deg);
+    background: rgb(38, 112, 155);
+    padding: 15px;
+    color: #f3f3f3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    box-shadow: 0 5px 10px #000;
+    font-family: "Bitcount Prop Single", system-ui;
+}
+.card .back h3 {
+     font-size: 30px;
+     margin-top: 20px;
+     letter-spacing: 2px;
+}
+.card:hover .front {
+    transform: perspective(600px) rotateX(180deg);
+}
+.card:hover .back {
+    transform: perspective(600px) rotateX(360deg);
+}
+
+.article{
+    position: relative;
+    width: 300px;
+    height: 350px;
+    transition: all .5s ease;
+}
+.article img:first-child{
+    box-shadow: 0 60px 60px -60px blue;
+    border-radius: 4px;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.article img:last-child{
+    position: absolute;
+    width: 250px;
+    height: 300px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: translateY(25%);
+    transition: 0.5s ease;
+    opacity: 0;
+}
+.article:hover{
+    transform:
+        perspective(250px) 
+        rotateX(20deg)
+        translateY(-5%)
+        translateZ(0);
+}
+.article::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background-image:
+        linear-gradient(
+            to bottom,
+            transparent 10%,
+            rgba(0,0,0,0.5)50%,
+            rgba(0,0,0,)90%,
+        );
+        opacity: 0;
+        transition: all 0.5s ease;
+}
+.article:hover::before{
+    opacity: 1;
+}
+article:hover img:last-child{
+    opacity: 1;
+    transform: translateY(20%);
+}
